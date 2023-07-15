@@ -47,14 +47,12 @@ async function loginUser() {
     const data = await res.json();
     console.log("login");
     console.log(res);
-
     if (res.status !== 200) {
         messageErrorAPI(res,data.message);        
     } else {
         messageSuccesAPI("Bienvenido: ", username);
         login.style.display = 'none';
     }
-
 }
 
 async function listProduct() {
