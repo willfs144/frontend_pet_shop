@@ -1,6 +1,6 @@
-const API_URL_GET_PRODUCTS = 'http://127.0.0.1:3001/productos/getproducts';
-const API_URL_USER_LOGIN = 'http://127.0.0.1:3001/dj-rest-auth/login/'
-const API_URL_DELETE_PRODUCT = (idProduct) => `http://127.0.0.1:3001/productos/deleteproduct/${idProduct}`
+const API_URL_GET_PRODUCTS = 'https://willfs144.pythonanywhere.com/productos/getproducts';
+const API_URL_USER_LOGIN = 'https://willfs144.pythonanywhere.com/dj-rest-auth/login/'
+const API_URL_DELETE_PRODUCT = (idProduct) => `https://willfs144.pythonanywhere.com/productos/deleteproduct/${idProduct}`
 
 const message = document.getElementById("message");
 
@@ -60,7 +60,6 @@ async function listProduct() {
     const data = await res.json();
     console.log(data);
     
-
     if(res.status !== 200) {
          messageErrorAPI(res, data.message);
     } else {
@@ -70,35 +69,28 @@ async function listProduct() {
             
         // Crea el primer div con la clase "box"   
         const divBox = document.createElement("div");
-        divBox.className = 'box';
-        
+        divBox.className = 'box';        
             // Crea el segundo div con la clase "icons"
             const divIcons = document.createElement("div");      
-            divIcons.className = 'icons';
-                
+            divIcons.className = 'icons';                
             addIconsProduct(divIcons, product.id);
-
              // Crea el segundo div con la clase "image"
             const divImage = document.createElement("div");      
             divImage.className = 'image';
 
             addImageProduct(product,divImage);
-
             // Crea el cuarto div con la clase "content"
             const divContent = document.createElement('div');
             divContent.className = 'content';
 
              addDetailProduct(product,divContent);
-
         // Agrega todos los divs como hijos del elemento padre
         divBox.appendChild(divIcons);
         divBox.appendChild(divImage);
         divBox.appendChild(divContent);
         
         boxContainerElement.appendChild(divBox);
-        });
-        
-    
+        });    
     }
 }
 
@@ -109,8 +101,7 @@ async function deleteProduct(idProduct) {
             'Content-Type': 'application/json',
         },
     });
-
-
+    
     console.log('Delete');
     console.log(res);
 
